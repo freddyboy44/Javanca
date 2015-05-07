@@ -1,0 +1,25 @@
+<div class="smalliconmenu">
+	{% set categorie = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|trim('/') %}
+
+	<ul>
+		<li><a href="/centrale-verwarming"><img class="img-hover {{ categorie == 'centrale-verwarming' ? 'actief' }}" src="{{ paths['theme'] }}/images/{{ categorie == 'centrale-verwarming' ? 'centraleverwarming_oranje.png' : 'centraleverwarming_wit.png'}}"></a></li>
+		<li><a href="/sanitair"><img class="img-hover {{ categorie == 'sanitair' ? 'actief' }}" src="{{ paths['theme'] }}/images/{{ categorie == 'sanitair' ? 'sanitair_oranje.png' : 'sanitair_wit.png'}}"></a></li>
+		<li><a href="/airco-warmtepompen"><img class="img-hover {{ categorie == 'airco-warmtepompen' ? 'actief' }}" src="{{ paths['theme'] }}/images/{{ categorie == 'airco-warmtepompen' ? 'airco_oranje.png' : 'airco_wit.png'}}"></a></li>
+		<li><a href="/ventilatie"><img class="img-hover {{ categorie == 'ventilatie' ? 'actief' }}" src="{{ paths['theme'] }}/images/{{ categorie == 'ventilatie' ? 'ventilatie_oranje.png' : 'ventilatie_wit.png'}}"></a></li>
+	</ul>
+</div>
+<script>
+	$('.img-hover').hover(function(){
+		$bestandsnaam = $(this).attr("src").replace("_wit.png","_oranje.png");
+		//console.log($bestandsnaam);
+		$(this).attr("src",$bestandsnaam);
+	});
+	$('.img-hover').mouseout(function(){
+		if(!$(this).hasClass('actief')){
+			$bestandsnaam = $(this).attr("src").replace("_oranje.png","_wit.png");
+			//console.log($bestandsnaam);
+			$(this).attr("src",$bestandsnaam);
+		};
+		
+	});
+</script>

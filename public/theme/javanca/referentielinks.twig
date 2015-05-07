@@ -1,0 +1,7 @@
+{% set categorie = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|trim('/') %}
+{% if categorie|length > 0 and categorie != "zonneboilers" %}
+<div class="referentielinks">
+	<a href="/referenties/{{ categorie }}">bekijk onze referenties</a>
+</div>
+
+{% endif %}

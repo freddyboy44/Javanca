@@ -1,0 +1,52 @@
+{% extends 'basepage.twig' %}
+{% block pagina %}
+		
+		
+
+		{% setcontent vacatures = "vacatures" %}
+<div class="pagina vacatures">
+		{% include 'snippets.twig' %}
+		<div class="container">
+
+			{% if vacatures|length > 0 %}
+
+				{% if vacatures|length > 1 %}
+
+					<h5>Op dit ogenblik hebben we {{ vacatures|length }} vacatures</h5>
+
+				{% else %}
+						
+					<h5>Op dit ogenblik hebben we 1 vacature</h5>
+
+				{% endif %}
+
+				{% for vacature in vacatures %}
+					<div class="vacature">
+						<h4>{{ vacature.titel }}</h4>
+						<p>
+							{{ vacature.omschrijving }}
+						</p>
+						
+						{% set opties = vacature.opties|split('\r\n') %}
+						<ul>
+							{% for optie in opties %}
+								<li>{{ optie }}</li>
+							{% endfor %}
+						</ul>
+					
+						<a class="solliciterenlink" href="/contact/solliciteer">solliciteren</a>
+					</div>
+
+				{% endfor %}
+
+			{% else %}
+
+			<h4>Momenteel zijn er geen vacatures</h4>
+			<br/>
+			Kom geregeld kijken.
+
+			{% endif %}
+
+		</div>
+	</div>
+{% endblock %}

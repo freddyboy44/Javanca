@@ -1,0 +1,45 @@
+
+
+@mixin breakpoint($point) {
+  @if $point == bigscreen {
+    @media (min-width: 1280px) { @content ; }
+  }
+   @elseif $point == desktop {
+     @media (min-width: 1070px) { @content ; }
+  }
+   @else if $point == laptop {
+     @media (min-width: 720px) { @content ; }
+  }
+    @else if $point == tablet {
+     @media (min-width: 600px) { @content ; }
+  }
+   @else if $point == phablet {
+     @media (min-width: 420px)  { @content ; }
+  }
+  @else if $point == mobileonly {
+     @media (max-width: 420px)  { @content ; }
+  }
+}
+
+@mixin vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin container {
+  .container {
+    width: 98;
+    margin: auto;
+    display: block;
+    max-width:1170px;
+  }
+}
+
+@mixin transform50 {
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}

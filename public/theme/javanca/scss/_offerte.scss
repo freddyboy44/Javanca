@@ -1,0 +1,60 @@
+.offerte {
+	display: none;
+	@include breakpoint(tablet) {
+		display: inline-block;
+	}
+	background-color: $oranjekleur;
+	width: 200px;
+	height: $hoogteofferte;
+	position: absolute;
+	right: 0px;
+	top: 130px;
+	@include breakpoint(tablet) {
+		top: 260px;	
+		width: 350px;
+		height: $hoogteofferte;
+	}
+	
+	padding:0;
+	z-index: 5;
+
+	.pijltje {
+		width: 20px !important;
+		height: 100%;
+		background-color: white;
+		text-align: center;
+		color: $oranjekleur;
+		float:left;
+		font-size: 20px;
+		//padding-top: 36px;
+		cursor: pointer;
+		i {
+			position: absolute;
+			top: 50%;
+			left:2px;
+			@include transform50();
+		}
+	}
+	.pijltje-links {
+		display: none;
+	}
+
+
+	p {
+		font-size: 36px;
+		color: white;
+		display: block;
+		float: right;
+		width: 330px;
+		//position: absolute;
+		//right: 35px;
+		margin:auto;
+		background-color: $oranjekleur;
+		text-align: center;
+		padding-top: 26px;
+	}
+
+	a, a:hover, a:active , a:focus{
+		color: white;
+	}
+}

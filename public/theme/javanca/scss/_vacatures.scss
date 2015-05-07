@@ -1,0 +1,28 @@
+.vacatures {
+	.vacature {
+		padding-left: 3px;
+		padding-right:3px;
+		max-width: 900px;
+		border-bottom: solid 1px $oranjekleur;
+		overflow: hidden;
+
+		a.solliciterenlink {
+			float:right;
+			margin-bottom:5px;
+		}
+		a.solliciterenlink:after {
+		    content: url('../images/verder_klein.png');
+		    top:5px;
+		    position: relative;
+		    
+		}
+
+		ul {
+			margin-bottom: 0;
+		}
+	}
+
+	.vacature:last-child {
+		//border-bottom: none;
+	}
+}

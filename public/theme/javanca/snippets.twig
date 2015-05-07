@@ -1,0 +1,75 @@
+{% if (path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))) == "/" %}
+	{% set categorie = 'home' %}
+	{% setcontent snippets = "pages" where { categories: 'home' } %}
+{% else %}
+		{% set categorie = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|trim('/') %}
+
+		{% set test = categorie|split('/')  %}
+		{% if test|length > 1 %}
+			{% set categorie = test[0] %}
+		{% endif %}
+		
+
+	
+	{% setcontent snippets = "snippets" where { categories: categorie } orderby 'volgorde' %}
+{% endif %}
+
+
+	
+	{% for snippet in snippets %}
+		<div class="onderdeel {{ categorie == 'home' ? 'home' : '' }}">
+			<div class="container">
+				{% if loop.index == 1 and categorie != 'contact' and categorie != 'vacatures' %}
+					{% include 'referentielinks.twig' %}
+				{% endif %}
+				<h2>{{ snippet.title }}</h2>
+				{{ snippet.body }}	
+			</div>
+		</div>	
+	{% endfor %}
+
+	<div class="container">
+			{% if record.title == 'Centrale Verwarming' %}
+				<div class="linkverder">
+					<a href="/zonneboilers">Zonneboilers</a>	
+				</div>
+				
+			{% endif %}
+		</div>
+
+	{% if categorie|length > 0 and categorie != 'contact' %}
+		{% setcontent partners = "partners" where { categories: categorie } %}
+		{% if partners|length > 0 %}
+			<div class="container">
+				<h3>
+					onze partners
+				</h3>
+				{% for partner in partners %}
+					<a target=_new href="{{ partner.website }}">
+					<div class="partner zwartwit">
+						<img  src="{{ paths['files'] }}/{{ partner.logo }}">
+					</div>
+					</a>
+				{% endfor %}
+			</div>
+		{% endif %}
+		<script>
+		/*$('.partner').each(function(){
+			$(this).BlackAndWhite({
+
+			    hoverEffect : false, // default true
+			    // set the path to BnWWorker.js for a superfast implementation
+			    webworkerPath : false,
+			    // to invert the hover effect
+			    invertHoverEffect: false,
+			    // this option works only on the modern browsers ( on IE lower than 9 it remains always 1)
+			    intensity:1,
+			    speed: { //this property could also be just speed: value for both fadeIn and fadeOut
+			        fadeIn: 200, // 200ms for fadeIn animations
+			        fadeOut: 800 // 800ms for fadeOut animations
+			    }
+			})
+		});*/
+		</script>
+	{% endif %}
+	

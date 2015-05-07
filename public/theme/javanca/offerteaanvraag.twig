@@ -1,0 +1,47 @@
+
+	{% if (path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))) == "/" %}
+	<div class="offerte">
+		<p class="offerte-tekst"><a href="/contact/offerte">Offerteaanvraag</a></p>
+		<div class="pijltje">
+			<i class="fa fa-arrow-right"></i>
+		</div>
+
+	{% else %}
+	<div class="offerte"  style="width:20px">
+		<div class="pijltje">
+			<i class="fa fa-arrow-left"></i>
+		</div>
+		<p class="offerte-tekst" style="display:none" ><a href="/contact/offerte">Offerteaanvraag</a></p>
+		
+	{% endif %}
+</div>
+
+<script>
+	$('.pijltje').click(function(){
+		var $snelheid = 120;
+		if($(this).children('i').hasClass('fa-arrow-left')){
+			//console.log("Staat toe, we moeten openen");
+			$(this).children('i').removeClass('fa-arrow-left');
+			$(this).children('i').addClass('fa-arrow-right');
+			$(this).removeClass('pijltje-links');
+			$(this).addClass('pijltje-rechts');
+
+			$('.offerte').css('display','block');
+			$('.offerte').animate({width:'350px'}, $snelheid);
+			$('.offerte-tekst').animate({width:'toggle'},$snelheid);
+
+
+		}else{
+			//console.log("Staat open, we moeten sluiten");
+			$('.offerte-tekst').css('display','none');
+			$('.offerte').animate({width:'20px'}, $snelheid);
+			$(this).children('i').removeClass('fa-arrow-right');
+			$(this).children('i').addClass('fa-arrow-left');
+		}
+		
+	})
+
+	
+
+	
+</script>

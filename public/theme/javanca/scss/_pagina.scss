@@ -1,0 +1,112 @@
+.pagina {
+	width: 100%;
+	margin:auto;
+	padding-bottom: 40px;
+
+	background: none;
+	overflow-x: hidden;
+
+	
+
+	@include breakpoint(tablet) {
+	 	width:100%;
+		background-size: 300px;
+		background-position-x: 105%;
+		background-position-y: 105%;
+		background-position: 105% 105%;
+		background-repeat: no-repeat;
+		
+	 	
+	} 
+	@include breakpoint(laptop) {
+	 	width:100%;
+	 	margin-left: 0;
+	 	background-size: 540px;	
+	}
+	@include breakpoint(desktop) {
+	 	width:100%;
+	 	min-height: 600px;
+	 	margin-left: 0;
+	 	padding-bottom: 400px;
+	}
+
+
+	.onderdeel {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.home:nth-child(1){
+		background-color: $grijzeachtergrond;
+	}
+}
+.pagina.home, .pagina.referenties {
+	@include breakpoint(desktop) {
+		padding-bottom: 50px;
+	}
+}
+
+.pagina.contact, .pagina.zonneboilers, .pagina.centrale-verwarming, .pagina.sanitair, .pagina.ventilatie, .pagina.airco-warmtepompen, .pagina.vacatures {
+	@include breakpoint(tablet){
+		margin-left: $breedtesmalliconmenu;
+		width: 95%;
+	}
+	@include breakpoint(laptop){
+		margin-left:0px;
+		width: 100%;
+	}
+	
+	p {
+		max-width: 970px;
+	}
+
+}
+
+.pagina.contact, .pagina.vacatures {
+	.container {
+		
+	}
+}
+
+.pagina.contact {
+	@include breakpoint(tablet) {
+		background-image: url('../images/contact_achtergrond.png');	
+
+	}
+	
+}
+.pagina.centrale-verwarming {
+	@include breakpoint(tablet) {
+	 	background-image: url('../images/centraleverwarming_achtergrond.png');
+
+	 } 
+}
+.pagina.zonneboilers {
+	@include breakpoint(tablet) {
+	 	background-image: url('../images/zonneboilers_achtergrond.png');
+
+	 } 
+}
+.pagina.sanitair {
+	@include breakpoint(tablet) {
+	 	background-image: url('../images/sanitair_achtergrond.png');
+
+	 } 
+}
+.pagina.ventilatie {
+	@include breakpoint(tablet) {
+	 	background-image: url('../images/ventilatie_achtergrond.png');
+
+	 } 
+}
+.pagina.airco-warmtepompen {
+	@include breakpoint(tablet) {
+	 	background-image: url('../images/airco_achtergrond.png');
+	 } 
+
+}
+.pagina.vacatures {
+	@include breakpoint(tablet) {
+	 	background-image: url('../images/vacatures_achtergrond.png');
+
+	 } 
+}

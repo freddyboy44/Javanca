@@ -1,0 +1,90 @@
+.logos {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	min-height: 130px;
+	display: none;
+	width: 100%;
+	overflow:visible;
+	//min-height: 50vh;
+	position: relative;
+	@include breakpoint(tablet) {
+		//min-height: 50vh;
+		min-height: 35%;
+		display: inline-block;
+	}
+
+	.logo {
+		width: 50%;
+		
+		min-height: 200px;
+		position:relative;
+		float:left;
+		margin-bottom: 5px;
+		overflow:hidden;
+
+		top: 50%;
+		@include transform50;
+
+
+		@include breakpoint(phablet) {
+			width: 50%;
+		}
+
+		@include breakpoint(tablet) {
+			width: 25%;
+		}
+
+		.gegevens {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			max-width: 35vw;
+
+			-webkit-transform: translate(-50%,-50%);
+		      -ms-transform: translate(-50%,-50%);
+		          transform: translate(-50%,-50%);
+			a {
+				width: 100%;
+				overflow-x: visible;
+
+			}
+			
+			img {
+				//max-height: 70px;
+
+				@include breakpoint(tablet) {
+					max-height: 120px;	
+				}
+				@include breakpoint(desktop) {
+					max-height: 150px;
+				}
+				display:block;
+				margin:auto;
+
+			}
+
+			p {
+				color: $oranjekleur;
+				text-align:center;
+				font-size: 4vw;
+				white-space: nowrap;
+				@include breakpoint(tablet) {
+					font-size: 2vw;
+				}
+				@include breakpoint(desktop) {
+					font-size: 22px;
+				}
+
+				margin:0;
+
+				margin-top: 7px;
+
+			}
+		}
+
+		
+
+
+	}
+}

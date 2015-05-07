@@ -1,0 +1,229 @@
+{% extends 'basepage.twig' %}
+{% block pagina %}
+
+	{% set categorie = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|trim('/') %}
+
+	{% if categorie == 'referenties' %}
+		{% set categorie = 'referenties/centrale-verwarming' %}
+	{% endif %}
+	
+	{% set test = categorie|split('/')  %}
+				
+	{% if test|length > 1 %}
+		{% set shortcategorie = test[1] %}	
+	{% endif %}
+	{% if test|length > 2 %}
+		{% set idreferentie = test[2] %}		
+	{% endif %}
+<div class="pagina referenties">
+	<div class="dummy"></div>
+	<div class="container referenties">
+		<div class="onderdeel">
+		<h2>Referenties</h2>
+		<ul>
+			<li><a {{ shortcategorie == 'centrale-verwarming' ? 'class="actief"' }} href="/referenties/centrale-verwarming">Centrale Verwarming</a></li>
+			<li><a {{ shortcategorie == 'sanitair' ? 'class="actief"' }} href="/referenties/sanitair">Sanitair</a></li>
+			<li><a {{ shortcategorie == 'airco-warmtepompen' ? 'class="actief"' }} href="/referenties/airco-warmtepompen">Airco / Warmtepompen</a></li>
+			<li><a {{ shortcategorie == 'ventilatie' ? 'class="actief"' }} href="/referenties/ventilatie">Ventilatie</a></li>
+		</ul> 	
+		<div class="slideshow-referenties">
+			{% setcontent slides = "referenties" where { categories: shortcategorie } %}
+			<div class="aantalslides" style="display:none">
+					{{ slides|length }}
+				</div>
+			<div class="owl-carousel overzicht">
+				
+				{% if idreferentie|length < 1 %}
+					{% set idreferentie = 0 %}
+				{% endif %}
+				{% for slide in slides %}
+
+					{% if loop.index == 1 and idreferentie == 0 %}
+						{% set idreferentie = slide.id %}
+
+					{% endif %}
+					<div class="item">
+						<a href="/referenties/{{ shortcategorie }}/{{ slide.id }}">
+							
+							<img class="{{ slide.id == idreferentie ? 'actief ' : 'niet-actief ' }} img-responsive" src="{{ slide.fotos.0|thumbnail(400,300) }}">
+							<p>
+								{{ slide.naam }}<br/>
+								{{ slide.locatie }}
+								<br/>
+							</p>
+						</a>
+				
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+			<div class="referentie">
+
+
+				{% setcontent referentie = "referenties" where { id: idreferentie}  %}
+				
+				<div class="slidefotos">
+					<div id="referentieslideshow">
+						
+						<div id="carousel-referenties" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner" role="listbox">
+								{% for foto in referentie.fotos %}
+									<div class="referentiefoto item {{ loop.index ==1 ? ' active ' }}">
+										<a href="{{ paths['files'] }}{{ foto.filename }}" class="magnific" title="{{ referentie.naam }}"><img src="{{ foto|thumbnail(1200,900) }}"></a>
+										
+									</div>
+								{% endfor %}
+							</div>
+							<a class="left carousel-control" href="#carousel-referenties" role="button" data-slide="prev">
+							    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							    <span class="sr-only">Previous</span>
+							  </a>
+							  <a class="right carousel-control" href="#carousel-referenties" role="button" data-slide="next">
+							    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							    <span class="sr-only">Next</span>
+							  </a>
+						</div>        
+						
+
+						
+					  	
+					</div>
+				</div>
+				<div class="gegevens ">
+					<h3>{{ referentie.naam }}</h3>
+					<h4>{{ referentie.locatie }}</h4>
+					<p>
+						{{ referentie.omschrijving }}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+	<script>
+	function LaadOwl(){
+		$scherm = $('.dummy').css('content');	
+		$aantal = $('.aantalslides').text();
+
+		$aantalphone = 2;
+		$aantalphablet = 2;
+		$aantaltablet = 3;
+		$aantallaptop = 4;
+		$aantaldesktop = 4;
+
+		
+		$nav = false;
+		$aantaltonen = 4;
+		if($scherm=="phone"){
+			$aantaltonen = $aantalphone;
+			if($aantal>$aantalphone){
+				$nav = true;
+			}
+		}
+		if($scherm=="phablet"){
+			$aantaltonen = $aantaltablet;
+			if($aantal>$aantalphablet){
+				$nav = true;
+			}
+		}
+		if($scherm=="tablet"){
+			$aantaltonen = $aantaltablet;
+			if($aantal>$aantaltablet){
+				$nav = true;
+			}
+		}
+		if($scherm=="laptop"){
+			$aantaltonen = $aantallaptop;
+			if($aantal>$aantallaptop){
+				$nav = true;
+			}
+		}
+		if($scherm=="desktop"){
+			$aantaltonen = $aantaldesktop;
+			if($aantal>$aantaldesktop){
+				$nav = true;
+			}
+		}
+		if(!$nav){
+			console.log($('.owl-controls'));
+			$('.owl-controls').hide();
+			
+		}else{	
+			$('.owl-controls').show();
+		}
+
+		console.log("Scherm: " + $scherm + "  Aantal: " + $aantal + " AantalTonen :" + $aantaltonen);
+		//ControleerPijltjes();
+		return $nav;
+		
+	}
+	$(window).resize(function(){
+		LaadOwl();	
+	})
+	$(window).load(function(){
+		LaadOwl();	
+		/*$("#carousel-referenties").carousel({
+	     	interval: 3000
+	     });*/
+	})
+
+
+	$(document).load(LaadOwl());
+
+		$('.owl-carousel').owlCarousel({
+		    loop:false,
+		    margin:30,
+		    nav:true,
+		    navText: [
+		      "<i class='invisible fa fa-angle-left'></i>",
+		      "<i class='fa fa-angle-right'></i>"
+		      ],
+		    responsive:{
+		        0:{
+		            items:2
+		        },
+		        600:{
+		            items:3
+		        },
+		        720:{
+		        	items:4
+		        },
+		        1000:{
+		            items:4
+		        }
+		    }
+
+		});
+		LaadOwl();
+		var owl = $('.owl-carousel');
+		owl.on('changed.owl.carousel', function(event) {
+		    ControleerPijltjes(event);
+		})
+		ControleerPijltjes();
+		function ControleerPijltjes(event) {
+		   console.log(event.item);
+		    var huidige = event.item.index;
+		    var aantal = event.item.count;
+		    console.log("Huidige: " + huidige + " Aantal: " + aantal + " Perpagina: " + event.page.size);
+		    var laatste = huidige + event.page.size;
+		    console.log("Laatste is " + laatste);
+		    
+		    if(laatste==aantal){
+		    	$('.fa-angle-right').addClass('invisible');
+		    }else{
+		    	$('.fa-angle-right').removeClass('invisible');
+		    }
+		    if(huidige == 0 ){
+		    	$('.fa-angle-left').addClass('invisible');
+		    }else{
+		    	$('.fa-angle-left').removeClass('invisible');	
+		    }
+		}
+
+		
+	</script>
+	
+{% endblock %}

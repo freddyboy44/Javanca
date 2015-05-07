@@ -1,0 +1,16 @@
+{% extends 'basepage.twig' %}
+{% block pagina %}
+		
+		{% set categorie = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|trim('/') %}
+
+		{% set test = categorie|split('/')  %}
+		{% if test|length > 1 %}
+			{% set categorie = test[0] %}
+		{% endif %}
+	<div class="pagina {{ categorie }} ">
+		{% include 'smalliconmenu.twig' %}	
+		{% include 'snippets.twig' %}
+		
+	</div>
+
+{% endblock %}

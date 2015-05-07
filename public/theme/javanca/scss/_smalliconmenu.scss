@@ -1,0 +1,50 @@
+.smalliconmenu {
+	display: none;
+	
+	@include breakpoint(tablet) {
+		display: block;
+	}
+	position: absolute;
+	left:0;
+	overflow: visible;
+	ul {
+		list-style: none;
+		width: 50px;
+		background-color: $paarsekleur;
+		position: absolute;
+		top: 30px;
+		left: 0px;
+		padding: 0px;
+		padding-top: 7px;
+		padding-bottom: 7px;
+
+		li {
+			width: 50px;
+			margin-left:auto;
+			margin-right: auto;
+			margin-bottom: 3px;
+			margin-top: 3px;
+			img {
+				margin:auto;
+				width: 40px ;
+				height:auto;
+				margin-bottom:3px;
+				margin:auto;
+				display: block;
+			}
+		}
+		li:first-child {
+			margin-top: 4px;
+		}
+		li:last-child {
+			margin-bottom: 4px;
+		}
+		
+	}
+}
+.smalliconmenu.fixed {
+	backface-visibility: hidden;
+	position: fixed;
+	top:10px;
+}
+

@@ -1,0 +1,137 @@
+nav {
+	overflow-y: hidden;
+
+	position: relative;
+	padding:0px ;
+	overflow-x: hidden;
+	
+
+	@include breakpoint(tablet){
+		padding: 7px;
+		height: 20%;
+	}
+	
+	height: 90px;
+	
+	max-height: 220px;
+
+	@include container;
+
+	.container {
+		height: 100%;
+		position: relative;
+		
+		.logo {
+				position: absolute;
+				height: 100%;
+				overflow: visible;
+				width: 100%;
+				
+				img {
+					
+					
+				}
+			}
+		a.logolink {
+			display: block;
+			overflow: visible;
+			top: 50%;
+			position: absolute;
+			-webkit-transform: translateY(-50%);
+      		-ms-transform: translateY(-50%);
+          	transform: translateY(-50%);
+		}
+
+		ul.desktop {
+			display: none;
+			height: 100%;
+			@include breakpoint(tablet) {
+				display: block;	
+			}
+			
+			float: right;
+			list-style: none;
+			li {
+				display: inline-block;
+				@include breakpoint(desktop) {
+					padding-left: 40px;	
+				}
+				padding-left: 20px;
+				position: relative;
+				text-align: right;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+      			-ms-transform: translateY(-50%);
+          		transform: translateY(-50%);
+				a {
+					color: $oranjekleur;
+					font-size: 28px;
+					font-family: "HelveticaNeueCondensedBold", serif;
+					
+				}
+			}
+					
+		}
+
+		.togglemobiel {
+			display: inline-block;
+			position: absolute;
+			width: 40px;
+			top: 49px;
+			right: 15px;
+			background-color: $paarsekleur;
+			text-align: center;
+			color:white;
+			padding: 7px;
+			border-radius: 4px;
+
+
+			@include breakpoint(tablet) {
+				display: none;
+			}
+		}
+		.togglemobiel {
+			cursor: pointer;
+		}
+
+		.menumobiel {
+			display: none;
+			position: fixed;
+			width: 93%;
+			top: 95px;
+			margin:auto;
+			z-index: 105;
+
+			ul.mobiel {
+				display: block;
+				list-style: none;
+				//padding-left: 0px;
+				padding:0;
+				li {
+					display: inline-block;
+					width: 100%;
+					background-color: $paarsekleur;
+					text-align: center;
+					padding: 7px;
+					//overflow:hidden;
+
+					border-bottom: solid 1px white;
+
+					a {
+						color: white;
+						font-size: 20px;
+					}
+				}
+				li:last-child {
+					border-bottom: none;
+				}
+			}
+
+		}
+
+	}
+
+	
+
+	
+}

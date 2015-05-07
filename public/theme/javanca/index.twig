@@ -1,0 +1,105 @@
+{% extends 'basepage.twig' %}
+{% block jqueryscript %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ paths['theme'] }}js/jquery.browser.min.js"></script>     
+	
+{% endblock %}
+{% block pagina %}
+	<div class="container">
+		<div class="logos">
+			<div class="logo">
+				<center>
+					<div class="gegevens">
+						
+							<a href="/centrale-verwarming"><img class="img-responsive" src="{{ paths['theme'] }}/images/centraleverwarming_oranje.png"></a>
+							<p>
+								<a href="/centrale-verwarming">Centrale Verwarming</a>
+							</p>
+						
+					</div>
+				</center>
+			</div>
+			<div class="logo">
+				<div class="gegevens">
+					<a href="/sanitair"><img class="img-responsive" src="{{ paths['theme'] }}/images/sanitair_oranje.png"></a>
+					<p>
+						<a href="/sanitair">Sanitair</a>
+					</p>
+				</div>
+			</div>
+			<div class="logo">
+				<div class="gegevens">
+					<a href="/airco-warmtepompen"><img class="img-responsive" src="{{ paths['theme'] }}/images/airco_oranje.png"></a>
+					<p>
+						<a href="/airco-warmtepompen">Airco / Waterpompen</a>
+					</p>
+				</div>
+			</div>
+			<div class="logo">
+				<div class="gegevens">
+					<a href="/ventilatie"><img class="img-responsive" src="{{ paths['theme'] }}/images/ventilatie_oranje.png"></a>
+					<p>
+						<a href="/ventilatie">Ventilatie</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pagina home">
+		{% include 'snippets.twig' %}
+	</div>
+	<script>
+		function PasAan(){
+			$percentagenav = 20;
+			$percentagemiddle = 55;
+			$percentageiconen = 25;
+			
+			$minimumhoogtenav = 135;
+
+			console.log("Versie browser" + $.browser.version);
+
+			$hoogte = $(window.top).height() ;			
+
+			console.log("Hoogte van het venster: " + $hoogte);
+			if($hoogte>1000){
+				$hoogte+=50;
+			}
+
+			$hoogtenav = $('nav').height();
+			$width = $(window).innerWidth();
+			console.log($width);
+			if($.browser.desktop && ($width>500)){
+				// We zitten in een browser
+				//alert($('nav').css('height'));
+				$nieuwehoogtenav = $hoogte / 100 * $percentagenav;
+				if($nieuwehoogtenav < $minimumhoogtenav){
+					$nieuwehoogtemiddle = ($hoogte - $minimumhoogtenav) / 100 * $percentagemiddle;
+					$nieuwehoogteiconen = ($hoogte - $minimumhoogtenav) / 100 * $percentageiconen;
+				}else{
+					$nieuwehoogtemiddle = $hoogte / 100 * $percentagemiddle;
+					$nieuwehoogteiconen = $hoogte / 100 * $percentageiconen;	
+				}
+				
+				console.log("Nieuwe hoogte van nav: " + $nieuwehoogtenav);
+				console.log("Nieuwe hoogte van middle: " + $nieuwehoogtemiddle);
+				console.log("Nieuwe hoogte van iconen: " + $nieuwehoogteiconen);
+				$('nav').css('height',$nieuwehoogtenav + "px");
+				//$('.carousel').css('height',$nieuwehoogtemiddle + "px");
+				//$('.carouselitem').each(function(){
+					//$(this).css('max-height',$nieuwehoogtemiddle + "px");
+				//})
+				$('.logos').css('height',$nieuwehoogteiconen + "px");
+				
+				
+
+			}
+		}
+		$(document).ready(function(){
+			PasAan();
+		});
+		$(window).resize(function(){
+			PasAan();
+		});
+
+	</script>
+{% endblock %}

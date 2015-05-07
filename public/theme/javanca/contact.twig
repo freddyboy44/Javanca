@@ -1,0 +1,44 @@
+{% extends 'basepage.twig' %}
+{% block scripts %}
+	{{ parent() }}
+		<script type="text/javascript" src="{{ paths['theme'] }}js/validatr.min.js"></script> 
+		
+	{% endblock %}
+{% block pagina %}
+	
+<div class="pagina contact">
+	{% set categorie = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|trim('/') %}
+
+	{% if categorie != 'contact' %}
+		{% set test = categorie|split('/')  %}
+		{% set categorie = test[1] %}
+	{% endif %}
+	{% include 'smalliconmenu.twig' %}	
+	{% include 'snippets.twig' %}
+		
+
+	
+	<div class="container">
+
+		
+		
+		{% block formulier2 %}
+		{% endblock %}
+		
+		{% if categorie == '' or categorie == 'contact' %}
+			<script>
+				$(":radio[value='algemeen']").attr('checked',true); 
+			</script>
+		{% elseif categorie == 'solliciteer' %}
+			<script>
+				$(":radio[value='sollicitatie']").attr('checked',true); 
+			</script>
+		{% elseif categorie == 'offerte' %}
+			<script>
+				$(":radio[value='offerte']").attr('checked',true); 
+			</script>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

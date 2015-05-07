@@ -1,0 +1,154 @@
+# This file defines the contenttypes on the website. See the documentation for
+# details: http://docs.bolt.cm/content#defining-contenttypes
+
+# Pages can be used for the more 'static' pages on your site. Things like
+# 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
+# field, which allows you to override the record_template setting for an
+# individual page.
+# The taxonomy for this contenttype is defined as 'chapters', which is a so-called
+# "grouping taxonomy". This way you can easily group sets of pages that logically
+# belong together. If your site has a 'services' section, in which you'd like to
+# list the different types of services a company provides, you can group these
+# together.
+
+pages:
+    name: Pages
+    singular_name: Page
+    fields:
+        title:
+            type: text
+            class: large
+            group: content
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+        teaser:
+            type: html
+            height: 150px
+        body:
+            type: html
+            height: 300px
+            options:
+                ckeditor:
+                    contentsCss: ["/theme/javanca/css/javanca.css"]
+                    allowedcontent: true
+        template:
+            type: templateselect
+            filter: '*.twig'
+    taxonomy: [categories]
+    recordsperpage: 100
+vacatures:
+    name: Vacatures 
+    singular_name: Vacature 
+    fields:
+        Titel:
+            type: text
+        Omschrijving:
+            type: html
+            height: 300px
+            options:
+                ckeditor:
+                    contentsCss: ["/theme/javanca/css/javanca.css"]
+                    allowedcontent: true
+        Opties:
+            type: textarea
+    
+
+referenties:
+    name: Referenties 
+    singular_name: Referentie 
+    fields:
+        Naam:
+            type: text
+        Locatie:
+            type: text
+        Omschrijving:
+            type: html
+        Fotos:
+            type: imagelist
+    taxonomy: [categories]
+    template: referenties.twig
+
+snippets:
+    name: Snippets
+    singular_name: Snippet 
+    fields:
+        title:
+            type: text
+        body:
+            type: html 
+        volgorde:
+            type: integer
+    taxonomy: [ categories ]
+
+
+jumbofotos:
+    name: Jumbofotos
+    singular_name: Jumbofoto 
+    fields: 
+        naam:
+            type: text
+        foto:
+            type: image
+        zichtbaar:
+            type: checkbox
+    searchable: false
+    taxonomy: [ categories ]
+
+partners:
+    name: Partners
+    singular_name: Partner
+    fields:
+        naam:
+            type: text
+            class: medium
+        website:
+            type: text
+            class: medium
+        logo:
+            type: image
+            label: logo
+        zichtbaar:
+            type: checkbox
+            label: Tonen op de site
+            default: 0
+    taxonomy: [ categories ]
+
+
+
+# Entries can be used for things like 'news' or 'blogpostings'. They have a 'teaser',
+# which can be used for a short blurb on listing-pages, allowing visitors to
+# click-through to the rest of the entry. It also has fields for an image and an
+# optional video.
+# A relation is defined to the pages contenttype. This way you can refer to a page
+# from your news-item.
+# This contenttype defines 'categories' and 'tags' as taxonomies, allowing the
+# editor to use both to categorize a specific entry.
+# The 'sort' is set to '-datepublish', which means that newer entries will be
+# shown above older entries.
+
+
+
+# possible field types:
+# text - varchar(256) - input type text.
+# integer - integer - Input field for integer numbers.
+# float - double - Input field for floating numbers, stored as 'Double'.
+# geolocation - text (65kb) - Input field for geolocation. Enter an address, and the location is geocoded to latitude/longitude coordinates
+# imagelist - text (65kb) - Input type for imagelists. Add multiple images with a description. Useful for image sliders, galleries, etcetera.
+# image - varchar(256) - image select/upload widget, stored as filename.
+# file - varchar(256) - file select/upload widget, stored as filename.
+# filelist - text (65kb) - Input type for a list of files. Including a description.
+# video - varchar(256) - Video embed widget, stored as filename.
+# html - text (65kb) - wysiwyg element.
+# textarea - varchar(32768) - Simple, plain < textarea > field.
+# markdown - varchar(32768) - Simple, plain < textarea > field, which is parsed as Markdown text.
+# datetime - datetime - date and time selector widget.
+# date - datetime - date selector widget.
+# select - varchar(256) - select with predefined values
+# templateselect - varchar(256) - select with template filenames
+# checkbox - integer - checkbox-field which is 1 (checked) or 0 (unchecked)
+
+
+# number (deprecated) - input type decimal(18,9), useful for storing number that need to be sortable

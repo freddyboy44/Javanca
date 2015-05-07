@@ -1,0 +1,93 @@
+
+<script>
+    jQuery(document).ready(function ($) {
+        var options = {
+        	$FillMode: 0, 
+        	$AutoPlay: true,  
+        	$AutoPlayInterval: 3000, 
+        	$SlideEasing: $JssorEasing$.$EaseOutQuint,
+        	$SlideDuration: 800,
+        	$SlideHeight: 300,
+            $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+            $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
+                $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                $AutoCenter: 0,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+            }
+        };
+
+        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+        function ScaleSlider() {
+            var bodyWidth = document.body.clientWidth;
+            if (bodyWidth)
+                jssor_slider1.$ScaleWidth(Math.min(bodyWidth, 1920));
+            else
+                $Jssor$.$Delay(ScaleSlider, 30);
+        }
+
+
+        ScaleSlider();
+        $Jssor$.$AddEvent(window, "load", ScaleSlider);
+
+        $Jssor$.$AddEvent(window, "resize", $Jssor$.$WindowResizeFilter(window, ScaleSlider));
+        $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+
+        
+    });
+</script>
+{% setcontent fotos = 'Jumbofotos'  %}
+	{% if fotos|length > 1 %}
+		<div id="slider1_container" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; overflow: hidden;">
+			<div id="slides" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px; overflow: hidden;">
+	            
+				{% for testfoto in fotos|shuffle %}
+					<div><img u="image" src="{{ paths['files'] }}/{{ testfoto.foto }}" /></div>
+				{% endfor %}
+
+				<style>
+		            /* jssor slider arrow navigator skin 03 css */
+		            /*
+		            .jssora03l              (normal)
+		            .jssora03r              (normal)
+		            .jssora03l:hover        (normal mouseover)
+		            .jssora03r:hover        (normal mouseover)
+		            .jssora03ldn            (mousedown)
+		            .jssora03rdn            (mousedown)
+		            */
+		            .jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
+		            {
+		            	position: absolute;
+		            	cursor: pointer;
+		            	display: block;
+		                //background: url(../img/a03.png) no-repeat;
+		                overflow:hidden;
+		            }
+		            .jssora03l { background-position: -3px -33px; }
+		            .jssora03r { background-position: -63px -33px; }
+		            .jssora03l:hover { background-position: -123px -33px; }
+		            .jssora03r:hover { background-position: -183px -33px; }
+		            .jssora03ldn { background-position: -243px -33px; }
+		            .jssora03rdn { background-position: -303px -33px; }
+		        </style>
+
+				<span u="arrowleft" class="jssora03l" style="width: 55px; height: 55px; top: 123px; left: 8px;">
+		        </span>
+		        <!-- Arrow Right -->
+		        <span u="arrowright" class="jssora03r" style="width: 55px; height: 55px; top: 123px; right: 8px">
+		        </span>
+
+	        </div>
+	        
+	    </div>
+
+	{% else %}
+
+		{% if fotos|length > 0 %}
+			<img src="{{ paths['files'] }}/{{ fotos.0.foto }}">		
+		{% endif %}
+
+	{% endif %}
+
+

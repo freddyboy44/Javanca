@@ -1,0 +1,85 @@
+
+    <footer>
+        <div class="container">
+            <div class="bedrijfsnaam">
+                Van Cauwenberghe Jan BVBA
+            </div>
+            <div class="kolom">
+                <div class="gegevens">
+                    <img src="{{ paths['theme'] }}images/adres.png">
+                    <p>
+                        Weststraat 70<br/>
+                        8340 Moerkerke-Damme
+                    </p>
+                </div>
+            </div>
+            <div class="kolom">
+                <div class="gegevens">
+                    <img src="{{ paths['theme'] }}images/email.png">
+                    <p>
+                        tel: 050 35 55 87<br/>
+                        fax: 050 36 29 87<br/>
+                        e-mail: info@javanca.be
+                    </p>
+                </div>
+            </div>
+            <div class="kolom">
+                <div class="gegevens">
+                    <img src="{{ paths['theme'] }}images/btw.png">
+                    <p>
+                        BTW: BE 462.255.973
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    {# Bolt comes with Magnific Popup, as it's used in the backend. We can use it here, or you can
+       just swap it out for the image-viewing script of your choice. Or delete it altogether. #}
+    <script type="text/javascript" src="{{ paths['theme'] }}js/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          $('.magnific').magnificPopup({
+                type:'image',
+                gallery:{
+                    enabled:true
+                  }
+            });
+        });
+    </script>
+    <script>
+    function zetgoed() {
+        //console.log("we proberen");
+        if(!$('.smalliconmenu').css('display') != 'none'){
+            $hoogteh2 = $('.smalliconmenu').offset();;
+            //console.log($hoogteh2);   
+
+        }   
+        $top = $('.referentielinks').offset().top;
+        var $positionTop = $('.referentielinks').position().top;
+        var $posY = $top - $(window).scrollTop();
+        
+        if($posY < 0){
+            console.log($('.smalliconmenu').css('position'));
+            if($('.smalliconmenu').css('position')!='fixed'){
+                $('.smalliconmenu').css('position','fixed');
+                $('.smalliconmenu').css('top','10px');  
+            }
+        }else{
+            $('.smalliconmenu').css('position','relative');
+            $('.smalliconmenu').css('top','inherit');
+        }
+        //console.log($posY);
+    }
+
+
+    $(window).load(zetgoed());
+    $(window).scroll(function(){
+        zetgoed();
+    })
+    </script>
+    
+    
+</body>
+</html>

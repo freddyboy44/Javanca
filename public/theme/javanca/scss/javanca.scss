@@ -1,0 +1,150 @@
+@import 'colors';
+@import 'variables';
+@import 'mixins';
+@import 'fonts';
+@import 'slideshow';
+@import 'logos';
+@import 'pagina';
+@import 'offerte';
+@import 'partners';
+@import 'smalliconmenu';
+@import 'referenties';
+@import 'menu';
+@import 'contact';
+@import 'vacatures';
+
+
+
+body {
+	font-family: "HelveticaNeue", serif;	
+}
+
+html, body {
+	height:100%;
+}
+
+.dummy {
+	display: none;
+	content: "phone";
+	
+	@include breakpoint(phablet) {
+		content: "phablet";
+	}
+	@include breakpoint(tablet) {
+		content: "tablet";
+	}
+	@include breakpoint(laptop) {
+		content: "laptop";
+	}
+	@include breakpoint(desktop) {
+		content: "desktop";
+	}
+		
+
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: "HelveticaNeueCondensedBold", serif;
+	color: $oranjekleur;
+	margin-top: 10px;
+}
+
+h2 {
+	@media (max-width: 420px) {
+	 	font-size: 24px;
+	}
+	
+}
+
+h5 {
+	color: $grijzelinkkleur;
+}
+
+a, a:hover, a:focus, a:active {
+	text-decoration: none;
+	font-family: "HelveticaNeueCondensedBold", serif;
+	color: $oranjekleur;
+}
+
+
+
+footer {
+	font-family: "HelveticaNeueCondensedBold", serif;
+	//letter-spacing: 0.6px;
+	background-color: $paarsekleur;
+	color: #fff	;
+	padding-top: 10px;
+	//margin-top: 25px;
+
+	@include breakpoint(desktop) {
+		//margin-top: 50px;
+	}
+
+	a, a:hover, a:focus {
+		color:white;
+	}
+
+	.bedrijfsnaam {
+		margin-top: 10px;
+		margin-bottom: 35px;
+		padding: 5px 0px ;
+		width: 100%;
+		border-bottom: solid 3px rgba(10,10,10,0.1);
+	}
+
+	.kolom {
+		width: 100%;
+		display: block;
+		float:left;
+		margin: auto;
+		margin-bottom: 25px;
+
+
+		@include breakpoint(tablet) {
+			width: 33.3%;
+		}
+
+		.gegevens {
+			overflow:hidden;
+			padding-left: 25px;
+
+			img {
+				width: 36px;
+				height: auto;
+				display: block;
+				float:left;
+				margin-right: 15px;
+			}
+			p {
+				display: block;
+				float:left
+			}
+
+			@include breakpoint(tablet) {
+				padding-left: 0px;
+			}
+		}
+
+		
+	}
+}
+
+.linkverder, .referentielinks {
+	
+	a {
+		color:black;
+	}
+	a:after {
+		
+	    content: url('../images/verder_klein.png');
+	    top:5px;
+	    position: relative;
+	    
+	}
+}
+.referentielinks {
+	float: right;
+}
+.linkverder {
+	margin-bottom: 25px;
+}

@@ -1,0 +1,26 @@
+#slider1_container, {
+	height: 80vh;
+	@include breakpoint(laptop) {
+		height: 50%;
+	}
+	min-height: 150px;
+	
+}
+
+.carousel.home {
+	//max-height: 400px;
+	border-top: solid 7px $paarsekleur;
+	border-bottom: solid 7px $paarsekleur;
+	@include breakpoint(desktop) {
+		border-top: solid 12px $paarsekleur;
+		border-bottom: solid 12px $paarsekleur;
+	}
+	.item {
+		overflow: hidden;
+		max-height: 500px;
+		img {
+			width: 100%;
+			height:auto;
+		}
+	}
+}

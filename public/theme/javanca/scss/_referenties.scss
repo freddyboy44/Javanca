@@ -1,0 +1,204 @@
+.referenties {
+	a.actief {
+		color: $oranjekleur;
+	}	
+	a {
+		color: $grijzelinkkleur;
+	}
+
+	ul {
+		padding-left: 0;
+		list-style: none;
+		font-size: 3.1vw;
+		margin-bottom: 10px;
+
+		@include breakpoint(laptop) {
+			font-size: 16px;
+		}
+
+		li {
+			display: inline-block;
+			padding-left: 0px;
+			padding-right: 5px;
+			@include breakpoint(laptop) {
+				padding-left: 0px;
+				padding-right: 20px;	
+			}
+		
+		}
+	}
+
+	.owl-carousel.overzicht {
+		overflow: visible;
+		margin-bottom: 25px;
+		.owl-item {
+			//max-height: 140px;
+			border-bottom: solid 2px $oranjekleur;	
+			padding:2px;
+			p {
+				font-family: "HelveticaNeueCondensedBold", serif;
+				color: $grijzelinkkleur;
+				margin-top: 5px;
+			}
+			img {
+				//max-height: 190px;
+				-webkit-transition: all 0.3s ease-in-out;
+			    -moz-transition: all 0.3s ease-in-out;
+			    -o-transition: all 0.3s ease-in-out;
+			    -ms-transition: all 0.3s ease-in-out;
+			    transition: all 0.3s ease-in-out;
+			}
+		}
+
+		.owl-controls {
+			width: 100%;
+			position: absolute;
+			top: 60px;
+			z-index: 10;
+
+			.owl-prev, .owl-next {
+				font-size: 50px;
+			}
+
+			.owl-prev {
+				position: absolute;
+				left:-14px;
+				font-size:34px;
+				@include breakpoint(laptop){
+					left:-30px;
+					font-size: 50px;
+				}
+				@include breakpoint(desktop){
+					left: -40px;	
+				}
+				
+				color: $oranjekleur;
+			}
+			.owl-next {
+				position: absolute;
+				color: $oranjekleur;
+				right:-14px;
+				font-size:34px;
+
+				@include breakpoint(laptop) {
+					right: -30px;
+					font-size: 50px;
+				}
+				@include breakpoint(desktop) {
+					right: -40px;
+				};
+				.fa-angle-right.invisible:before, .fa-angle-left.invisible:before {
+					content: "";
+				}
+			}
+
+
+		}	
+		.owl-nav {
+			width: 100%;
+		}
+		.actief {
+			/* -webkit-filter: sepia(0.6);
+  			filter: sepia(0.6); */
+
+		}
+		.niet-actief {
+			-webkit-filter: grayscale(100%) opacity(0.3) ;
+			filter: grayscale(100%) opacity(0.3);
+			
+		}
+		.niet-actief:hover {
+			-webkit-filter: grayscale(0%) opacity(1);
+			filter: grayscale(0%) opacity(1);
+			/* -webkit-transform: scale(1.3);
+			  			-moz-transform: scale(1.3);
+			  			-o-transform: scale(1.3);
+			  			transform: scale(1.3); */
+		}
+	}
+
+	.referentie {
+		.gegevens {
+			//max-width: 1000px;
+			margin:auto;
+			color: darken($grijzelinkkleur,10%);
+			h2, h3, h4 {
+				color: darken($grijzelinkkleur,10%);
+			}
+
+			border-bottom: solid 2px $oranjekleur;
+			p {
+				padding: 1px;
+			}
+			
+		}
+
+		.slidefotos {
+			min-height: 300px;
+			.referentieslideshow {
+				height: 100%;
+				.item {
+					height:100%;
+					img {
+						max-height: 500px;
+						;
+					}
+
+				}
+			}
+
+			.owl-controls {
+				width: 100%;
+				position: absolute;
+				top: 40%;
+				z-index: 10;
+
+				.owl-prev, .owl-next {
+					font-size: 50px;
+				}
+
+				.owl-prev {
+					position: absolute;
+					left: 10px;
+					color: white;
+				}
+				.owl-next {
+					position: absolute;
+					color: white;
+					//@include breakpoint(desktop) {
+						right: 10px;
+					//}
+				}
+			}	
+			.owl-nav {
+				width: 100%;
+			}
+
+		}
+	}
+
+}
+#referentieslideshow {
+	//max-width: 1000px;
+
+	margin:auto;
+	.item {
+		img {
+			max-height: 700px;
+			width:100%;
+			height: 100%;
+		}
+	}
+	.carousel-inner {
+		max-height:800px;
+	}
+}
+.referentiefoto {
+	img {
+		width: auto;
+		height: 100%;
+		max-height: 800px;
+		display: block;
+		margin:auto;
+	}
+}

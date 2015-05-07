@@ -1,0 +1,50 @@
+<nav id="menu" role="navigation">
+	<div class="container">
+		<div class="logo">
+			<a class="logolink" href="/"><img id="logo-vancauwenberghe" class="img-responsive" src="{{ paths['theme'] }}images/vancauwenberghe-logo.png"></a>
+		</div>
+		<ul class="desktop" id="menuitems">
+			<li><a href="/referenties">Referenties</a></li>
+			<li><a href="/vacatures">Vacatures</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>	
+		<div class="togglemobiel">
+			<i class="fa fa-bars"></i>
+		</div>
+		<div class="menumobiel">
+			<ul class="mobiel">
+				<li><a href="/centrale-verwarming">Centrale Verwarming</a></li>
+				<li><a href="/sanitair">Sanitair</a></li>
+				<li><a href="/airco-warmtepompen">Airco / Warmtepompen</a></li>
+				<li><a href="/ventilatie">Ventilatie</a></li>
+				<li><a href="/referenties">Referenties</a></li>
+				<li><a href="/vacatures">Vacatures</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<script>
+	$('.togglemobiel').click(function(){
+		$('.menumobiel').slideToggle();
+	})
+
+	function pasLogoAan(){
+		$hoogte = $('#menu').height();
+		if($hoogte>120){
+			$hoogte = $hoogte - 30;	
+		}else{
+			$hoogte = $hoogte - 10;
+		}
+		
+		$('#logo-vancauwenberghe').css('max-height',$hoogte);
+	}
+
+	$(window).resize(function(){
+		pasLogoAan();
+	})
+
+	$(document).ready(function(){
+		pasLogoAan();
+	})
+</script>
