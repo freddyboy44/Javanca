@@ -4,9 +4,9 @@
 # If you're trying out Bolt, just keep it set to SQLite for now.
 database:
   driver: mysql
-  databasename: javanca
-  username: javanca
-  password: 8W7CyJBBNn5MDB8t
+  databasename: javanca_bolt
+  username: javanca_user
+  password: r45zp786aeef
 
 # The name of the website
 sitename: Van Cauwenberghe Jan
@@ -114,7 +114,7 @@ recordsperpage: 10
 # - authenticated: cache 'templates' and 'request' for logged-on users. In most cases you should *NOT* enable
 #   this, because it will cause side-effects if the website shows different content to authenticated users.
 caching:
-  config: true
+  config: false
   templates: true
   request: false
   duration: 10
@@ -141,8 +141,8 @@ thumbnails:
   cropping: crop
   notfound_image: view/img/default_notfound.png
   error_image: view/img/default_error.png
-  save_files: false
-  allow_upscale: false
+  save_files: true
+  allow_upscale: true
   exif_orientation: true
 #  browser_cache_time: 2592000
 
@@ -177,7 +177,7 @@ debug_show_loggedoff: false
 debug_permission_audit_mode: false
 debug_error_level: 6135 # equivalent to E_ALL &~ E_NOTICE &~ E_DEPRECATED &~ E_USER_DEPRECATED
 #debug_error_level: 30719 # equivalent to E_ALL
-debug_enable_whoops: true # change this to false to use PHP's built-in error handling instead of Whoops
+debug_enable_whoops: false # change this to false to use PHP's built-in error handling instead of Whoops
 
 # Uncomment to enable permission checks in the frontend.
 # This allows hiding certain content types from regular (unauthenticated
@@ -318,5 +318,3 @@ extensions:
 #    disable: true   # Disable news panel. Defaults to false
 #  stack:
 #    disable: true   # Disable stack usage. Defaults to false
-
-gregwar_image: ~

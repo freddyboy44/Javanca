@@ -1,0 +1,36 @@
+
+
+{% setcontent fotos = 'Jumbofotos'  %}
+	{% if fotos|length > 1 %}
+		<div id="myCarousel" class="carousel slide home" data-ride="carousel">
+			<div class="carousel-inner" role="listbox">
+				{% for testfoto in fotos|shuffle %}
+					<div class="item carouselitem {{ loop.index ==1 ? ' active ' }}">{{ testfoto.foto|showimage(1200,500,c) }}</div>
+				{% endfor %}
+			</div>
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+		</div>        
+		<script>
+		$('#myCarousel').carousel({
+		  interval: 4000
+		})
+		</script>
+				
+
+	{% else %}
+
+		{% if fotos|length > 0 %}
+
+			<img src="{{ paths['files'] }}/{{ fotos.0.foto }}">		
+		{% endif %}
+
+	{% endif %}
+
+

@@ -1,0 +1,168 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "ad9b60df47dbb3254cea791530bdcd16",
+    "packages": [
+        {
+            "name": "bolt/boltforms",
+            "version": "v2.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GawainLynch/bolt-extension-boltforms.git",
+                "reference": "12a4f03b0c36f156e98849295d16d76f04e3b480"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GawainLynch/bolt-extension-boltforms/zipball/12a4f03b0c36f156e98849295d16d76f04e3b480",
+                "reference": "12a4f03b0c36f156e98849295d16d76f04e3b480",
+                "shasum": ""
+            },
+            "require": {
+                "bolt/bolt": ">=2.1.0,<3.0.0"
+            },
+            "type": "bolt-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.*-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Bolt\\Extension\\Bolt\\BoltForms\\": [
+                        "",
+                        "src/"
+                    ],
+                    "Bolt\\Extension\\Bolt\\BoltForms\\Tests\\": "tests/",
+                    "ReCaptcha\\": "lib/ReCaptcha/"
+                }
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Gawain Lynch",
+                    "email": "gawain.lynch@gmail.com"
+                }
+            ],
+            "description": "Symfony Forms API for bolt",
+            "keywords": [
+                ""
+            ],
+            "support": {
+                "source": "https://github.com/GawainLynch/bolt-extension-boltforms/tree/v2.1.4",
+                "issues": "https://github.com/GawainLynch/bolt-extension-boltforms/issues"
+            },
+            "time": "2015-04-14 09:58:17"
+        },
+        {
+            "name": "bolt/googleanalytics",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bolt/GoogleAnalytics.git",
+                "reference": "ed62b081e174a6655d26f0a08f4ff505b3ddf6fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bolt/GoogleAnalytics/zipball/ed62b081e174a6655d26f0a08f4ff505b3ddf6fa",
+                "reference": "ed62b081e174a6655d26f0a08f4ff505b3ddf6fa",
+                "shasum": ""
+            },
+            "require": {
+                "bolt/bolt": ">=2.0.0,<3.0.0"
+            },
+            "type": "bolt-extension",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Bolt\\Extension\\Bolt\\GoogleAnalytics\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bob den Otter",
+                    "email": "bob@twokings.nl"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/bolt/GoogleAnalytics/tree/v1.0.1",
+                "issues": "https://github.com/bolt/GoogleAnalytics/issues"
+            },
+            "time": "2014-12-02 14:15:44"
+        },
+        {
+            "name": "propaganistas/bolt-twig-emailobfuscator",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Propaganistas/bolt-twig-emailobfuscator.git",
+                "reference": "fd1221789c4cc3284b21f701b155ad26182c9fd1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Propaganistas/bolt-twig-emailobfuscator/zipball/fd1221789c4cc3284b21f701b155ad26182c9fd1",
+                "reference": "fd1221789c4cc3284b21f701b155ad26182c9fd1",
+                "shasum": ""
+            },
+            "require": {
+                "bolt/bolt": ">=2.0,<3.0"
+            },
+            "type": "bolt-extension",
+            "extra": {
+                "bolt-assets": "assets"
+            },
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Bolt\\Extension\\Propaganistas\\TwigEmailObfuscator\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Propaganistas",
+                    "email": "Propaganistas@users.noreply.github.com"
+                }
+            ],
+            "description": "Adds a Twig filter to Bolt CMS for automatic email obfuscation.",
+            "keywords": [
+                "anti-spam",
+                "bolt",
+                "email",
+                "filter",
+                "obfuscation",
+                "spam",
+                "twig"
+            ],
+            "support": {
+                "source": "https://github.com/Propaganistas/bolt-twig-emailobfuscator/tree/2.0.0",
+                "issues": "https://github.com/Propaganistas/bolt-twig-emailobfuscator/issues"
+            },
+            "time": "2015-01-06 22:22:45"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

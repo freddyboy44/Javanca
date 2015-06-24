@@ -1,0 +1,126 @@
+{% extends  'contact.twig' %}
+
+	{% form_theme form _self %}
+
+	{%- block form_row -%}
+	    <div style="clear:both">
+	        {{- form_label(form) -}}
+	        {{- form_errors(form) -}}
+	        {{- form_widget(form) -}}
+	    </div>
+	{%- endblock form_row -%}
+
+	{% block form_errors %}
+	    {% spaceless %}
+	        {% if errors|length > 0 %}
+	            {% for error in errors %}
+	                {{ error.message }}
+	            {% endfor %}
+	        {% endif %}
+	    {% endspaceless %}
+	{% endblock form_errors %}
+
+	{%- block form_widget_simple -%}
+	    {%- set type = type|default('text') -%}
+	    <input class="hahahah" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+	{%- endblock form_widget_simple -%}
+
+	{% block formulier2 %}
+		{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+		<div class="hoofdding">
+			<div class="titel">
+				<h3>Een vraag? Neem contact op.</h3>
+			</div>
+			<div class="foutmelding">
+				<div class="allevelden"><i class="fa fa-exclamation-circle"></i>Gelieve alle velden in te vullen</div>
+				<span class="errors"><i class="fa fa-exclamation-circle"></i><span class="foutmeldingen">{{ form_errors(form) }}</span></span>
+			</div>
+		</div>
+			
+		    
+		    
+		    
+			{{ form_row(form.Naam) }}
+			{{ form_row(form.Email) }}
+			{{ form_row(form.Telefoon) }}
+			{{ form_row(form.Categorie) }}
+			{{ form_row(form.Vraag) }}
+			<div  id="div-captcha">
+				<div>
+					<img id="captcha" src="{{ paths['theme'] }}securimage/securimage_show.php" alt="CAPTCHA Image" />	
+				</div>
+				<div>
+					<p>
+						Captcha controle: typ de tekst na
+					</p>
+					<input type="textbox" name="captcha_code" id="captcha_code">		
+					{{ form_row(form.Opslaan) }}
+				</div>
+			</div>
+			
+			
+			{{ form_end(form) }}
+		    <script>
+		    		function validateEmail(email) {
+					    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+					    return re.test(email);
+					}
+					$('form').submit(function( event ) {
+					  var goed = true;
+					  console.log("Lengte" + $('#contactformulier_Naam').val().length);
+					  if($('#contactformulier_Naam').val().length==0){
+					  	goed=false;
+					  	$('#contactformulier_Naam').addClass('fout');
+					  }else{
+					  	$('#contactformulier_Naam').removeClass('fout');
+					  	$('#contactformulier_Naam').addClass('goed');
+					  }
+					  if($('#contactformulier_Telefoon').val().length==0){
+					  	goed=false;
+					  	$('#contactformulier_Telefoon').addClass('fout');
+					  }else{
+					  	$('#contactformulier_Telefoon').removeClass('fout');
+					  	$('#contactformulier_Telefoon').addClass('goed');
+					  }
+					  if($('#contactformulier_Email').val().length==0){
+					  	goed=false;
+					  	$('#contactformulier_Email').addClass('fout');
+					  }else{
+					  	if(validateEmail($('#contactformulier_Email').val())){
+					  		$('#contactformulier_Email').removeClass('fout');
+					  		$('#contactformulier_Email').addClass('goed');	
+					  	}else{
+					  		goed=false;
+					  		$('#contactformulier_Email').addClass('fout');
+					  	}
+					  	
+					  }
+					  if($('#contactformulier_Vraag').val().length==0){
+					  	goed=false;
+					  	$('#contactformulier_Vraag').addClass('fout');
+					  }else{
+					  	$('#contactformulier_Vraag').removeClass('fout');
+					  	$('#contactformulier_Vraag').addClass('goed');
+					  }
+					  if($('#captcha_code').val().length==0){
+					  	goed=false;
+					  	$('#captcha_code').addClass('fout');
+					  }else{
+					  	$('#captcha_code').removeClass('fout');
+					  	$('#captcha_code').addClass('goed');
+					  }
+					  if(!goed){
+					  	event.preventDefault();
+					  	console.log(goed);
+					  	$('.allevelden').addClass('visible');
+					  }
+					});
+					$(document).ready(function(){
+						console.log($('.foutmeldingen').html());
+						if($('.foutmeldingen').html().trim().length > 0){
+							$('.errors').addClass('visible');
+						};
+					})
+		    </script>
+		
+	{% endblock %}

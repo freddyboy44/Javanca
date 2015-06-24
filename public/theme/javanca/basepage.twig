@@ -17,42 +17,42 @@
 
     
 
-    {# paths.theme is always a correct path to the current theme. Even if you rename the theme-folder,
+    {# /theme/javanca/ is always a correct path to the current theme. Even if you rename the theme-folder,
        this will keep working. See the documentation on paths: http://docs.bolt.cm/internals#paths #}
        {% block stylesheets %}
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
             <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-            <link rel="stylesheet" href="{{ paths.theme }}css/javanca.css">
-            <link rel="stylesheet" href="{{ paths.theme }}css/owl.carousel.css">
-            <link rel="stylesheet" href="{{ paths.theme }}css/magnific-popup.css">   
+            <link rel="stylesheet" href="/theme/javanca/css/javanca.css">
+            <link rel="stylesheet" href="/theme/javanca/css/owl.carousel.css">
+            <link rel="stylesheet" href="/theme/javanca/css/magnific-popup.css">   
         {% endblock %}
 
         {% block scripts %}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-            <script src="{{ paths['theme'] }}js/owl.carousel.min.js"></script>
-            <script type="text/javascript" src="{{ paths['theme'] }}js/owl.carousel.min.js"></script> 
-            <script type="text/javascript" src="{{ paths['theme'] }}js/bw.js"></script>     
+            <script src="/theme/javanca/js/owl.carousel.min.js"></script>
+            <script type="text/javascript" src="/theme/javanca/js/owl.carousel.min.js"></script> 
+            <script type="text/javascript" src="/theme/javanca/js/bw.js"></script>     
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         {% endblock %}
     
 
     
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ paths['theme'] }}/images/favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ paths['theme'] }}/images/favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ paths['theme'] }}/images/favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ paths['theme'] }}/images/favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ paths['theme'] }}/images/favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ paths['theme'] }}/images/favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ paths['theme'] }}/images/favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ paths['theme'] }}/images/favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ paths['theme'] }}/images/favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{ paths['theme'] }}/images/favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ paths['theme'] }}/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ paths['theme'] }}/images/favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ paths['theme'] }}/images/favicons/favicon-16x16.png">
-    <link rel="manifest" href="{{ paths['theme'] }}/images/favicons/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="/theme/javanca//images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/theme/javanca//images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/theme/javanca//images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/theme/javanca//images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/theme/javanca//images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/theme/javanca//images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/theme/javanca//images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/theme/javanca//images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/theme/javanca//images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/theme/javanca//images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/theme/javanca//images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/theme/javanca//images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/theme/javanca//images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/theme/javanca//images/favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{ paths['theme'] }}/images/favicons/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="/theme/javanca//images/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     
   
@@ -68,7 +68,7 @@
 <div class="test" style="min-height:100%">
 	{% block slideshow %}
 		{% include 'offerteaanvraag.twig' %}
-		{% include '_jumboslideshow2.twig' %}
+		{% include '_jumboslideshow3.twig' %}
 	{% endblock %}
 	{% block pagina %}
 		Airco / Warmtepompen
@@ -84,7 +84,7 @@
             </div>
             <div class="kolom">
                 <div class="gegevens">
-                    <img src="{{ paths['theme'] }}images/adres.png">
+                    <img src="/theme/javanca/images/adres.png">
                     <p>
                         Weststraat 70<br/>
                         8340 Moerkerke-Damme
@@ -93,11 +93,11 @@
             </div>
             <div class="kolom">
                 <div class="gegevens">
-                    <img src="{{ paths['theme'] }}images/email.png">
+                    <img src="/theme/javanca/images/email.png">
                     <p>
                         tel: 050 35 55 87<br/>
                         fax: 050 36 29 87<br/>
-                        e-mail: <!--Place the code below where you want the link to be displayed-->
+                        e-mail: 
 <span id="obf"><script>document.getElementById("obf").innerHTML="<n uers=\"znvygb:vasb@wninapn.or?fhowrpg=Iennt ivn jrofvgr\" gnetrg=\"_oynax\">vasb@wninapn.or</n>".replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);});document.body.appendChild(eo);</script>
 <noscript><span style="unicode-bidi:bidi-override;direction:rtl;">eb.acnavaj@ofni</span></noscript></span>
                     </p>
@@ -105,7 +105,7 @@
             </div>
             <div class="kolom">
                 <div class="gegevens">
-                    <img src="{{ paths['theme'] }}images/btw.png">
+                    <img src="/theme/javanca/images/btw.png">
                     <p>
                         BTW: BE 462.255.973
                     </p>
@@ -120,7 +120,7 @@
 
     {# Bolt comes with Magnific Popup, as it's used in the backend. We can use it here, or you can
        just swap it out for the image-viewing script of your choice. Or delete it altogether. #}
-    <script type="text/javascript" src="{{ paths['theme'] }}js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/theme/javanca/js/jquery.magnific-popup.min.js"></script>
     <script>
         $(document).ready(function() {
           $('.magnific').magnificPopup({

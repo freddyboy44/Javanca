@@ -5,7 +5,6 @@
 		<div id="myCarousel" class="carousel slide home" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
 				{% for testfoto in fotos|shuffle %}
-					
 					<div class="item carouselitem {{ loop.index ==1 ? ' active ' }}"><img class="" u="image" src="{{ image(testfoto.foto) }}" /></div>
 				{% endfor %}
 			</div>

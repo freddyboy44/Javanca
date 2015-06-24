@@ -6,7 +6,8 @@
     "require": {
         "bolt/bolt": "~2.1",
         "composer/composer": "1.0.*@dev",
-        "ircmaxell/random-lib": "dev-master"
+        "ircmaxell/random-lib": "dev-master",
+        "bolt/thumbs": "dev-master"
     },
     "authors": [
         {
@@ -28,7 +29,7 @@
         "branch-alias": {
             "dev-master": "2.1-dev"
         },
-        "bolt-web-dir": "./",
+        "bolt-web-dir": "/public_html/",
         "bolt-app-dir": "./app"
     }
     

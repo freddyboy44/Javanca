@@ -1,7 +1,7 @@
 {% extends 'basepage.twig' %}
 {% block jqueryscript %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{ paths['theme'] }}js/jquery.browser.min.js"></script>     
+	<script type="text/javascript" src="/theme/javanca/js/jquery.browser.min.js"></script>     
 	
 {% endblock %}
 {% block pagina %}
@@ -11,7 +11,7 @@
 				<center>
 					<div class="gegevens">
 						
-							<a href="/centrale-verwarming"><img class="img-responsive" src="{{ paths['theme'] }}/images/centraleverwarming_oranje.png"></a>
+							<a href="/centrale-verwarming"><img class="img-responsive" src="/theme/javanca//images/centraleverwarming_oranje.png"></a>
 							<p>
 								<a href="/centrale-verwarming">Centrale Verwarming</a>
 							</p>
@@ -21,7 +21,7 @@
 			</div>
 			<div class="logo">
 				<div class="gegevens">
-					<a href="/sanitair"><img class="img-responsive" src="{{ paths['theme'] }}/images/sanitair_oranje.png"></a>
+					<a href="/sanitair"><img class="img-responsive" src="/theme/javanca//images/sanitair_oranje.png"></a>
 					<p>
 						<a href="/sanitair">Sanitair</a>
 					</p>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="logo">
 				<div class="gegevens">
-					<a href="/airco-warmtepompen"><img class="img-responsive" src="{{ paths['theme'] }}/images/airco_oranje.png"></a>
+					<a href="/airco-warmtepompen"><img class="img-responsive" src="/theme/javanca//images/airco_oranje.png"></a>
 					<p>
 						<a href="/airco-warmtepompen">Airco / Waterpompen</a>
 					</p>
@@ -37,7 +37,7 @@
 			</div>
 			<div class="logo">
 				<div class="gegevens">
-					<a href="/ventilatie"><img class="img-responsive" src="{{ paths['theme'] }}/images/ventilatie_oranje.png"></a>
+					<a href="/ventilatie"><img class="img-responsive" src="/theme/javanca//images/ventilatie_oranje.png"></a>
 					<p>
 						<a href="/ventilatie">Ventilatie</a>
 					</p>
@@ -56,16 +56,16 @@
 			
 			$minimumhoogtenav = 135;
 
-			console.log("Versie browser" + $.browser.version);
+			//console.log("Versie browser" + $.browser.version);
 
-			$hoogte = $(window.top).height() ;			
+			$hoogte = $(window.top).innerHeight() ;			
 
 			console.log("Hoogte van het venster: " + $hoogte);
 			if($hoogte>1000){
 				$hoogte+=50;
 			}
 
-			$hoogtenav = $('nav').height();
+			$hoogtenav = $('nav').innerHeight();
 			$width = $(window).innerWidth();
 			console.log($width);
 			if($.browser.desktop && ($width>500)){
@@ -73,17 +73,38 @@
 				//alert($('nav').css('height'));
 				$nieuwehoogtenav = $hoogte / 100 * $percentagenav;
 				if($nieuwehoogtenav < $minimumhoogtenav){
-					$nieuwehoogtemiddle = ($hoogte - $minimumhoogtenav) / 100 * $percentagemiddle;
-					$nieuwehoogteiconen = ($hoogte - $minimumhoogtenav) / 100 * $percentageiconen;
-				}else{
+					$nieuwehoogtenav = $minimumhoogtenav;
+				}
+					/*$nieuwehoogtemiddle = ($hoogte - $minimumhoogtenav) / 100 * $percentagemiddle;
+					$nieuwehoogteiconen = ($hoogte - $minimumhoogtenav) / 100 * $percentageiconen;*/
+				/*}else{
 					$nieuwehoogtemiddle = $hoogte / 100 * $percentagemiddle;
 					$nieuwehoogteiconen = $hoogte / 100 * $percentageiconen;	
+				}*/
+				
+				$over = $hoogte - $hoogtenav;
+				if($over>700){
+					$hoogtemiddennieuw = 65;
+					$hoogteiconennieuw = 35;
+				}else{
+					$hoogtemiddennieuw = 60;
+					$hoogteiconennieuw = 40;	
 				}
 				
-				console.log("Nieuwe hoogte van nav: " + $nieuwehoogtenav);
+				$nieuwehoogtemidden = $over / 100 * $hoogtemiddennieuw;
+				$nieuwehoogteiconen = $over / 100 * $hoogteiconennieuw;
+				console.log("We hebben van de " + $hoogte + " nog " + $over + "over");
+				console.log("Hiervan gaat " + $hoogtemiddennieuw + "% naar midden: " + $nieuwehoogtemidden + " en " + $hoogteiconennieuw + "% naar iconen: " + $nieuwehoogteiconen);
+				$nieuwehoogtemiddenitem = $nieuwehoogtemidden - 33;
+
+				/*console.log("Nieuwe hoogte van nav: " + $nieuwehoogtenav);
 				console.log("Nieuwe hoogte van middle: " + $nieuwehoogtemiddle);
-				console.log("Nieuwe hoogte van iconen: " + $nieuwehoogteiconen);
+				console.log("Nieuwe hoogte van iconen: " + $nieuwehoogteiconen);*/
 				$('nav').css('height',$nieuwehoogtenav + "px");
+				$('.carousel.home').css('max-height',$nieuwehoogtemidden + "px");
+				$('.carousel.home').find('.item').each(function(){
+					$(this).css('max-height',$nieuwehoogtemiddenitem);
+				})
 				//$('.carousel').css('height',$nieuwehoogtemiddle + "px");
 				//$('.carouselitem').each(function(){
 					//$(this).css('max-height',$nieuwehoogtemiddle + "px");
